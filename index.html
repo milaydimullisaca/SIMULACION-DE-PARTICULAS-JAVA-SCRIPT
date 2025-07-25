@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiccioSys</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="toggle-theme-btn" id="toggle-theme" title="Toggle dark/light mode">🌙</button>
+    <div id="start-screen" class="container">
+        <div style="display:flex;justify-content:center;align-items:center;gap:18px;">
+            <span style="display:inline-block;width:54px;height:54px;">
+                <!-- Bee SVG Logo -->
+                <svg viewBox="0 0 64 64" width="54" height="54" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="38" rx="8" ry="14" fill="#fff" opacity="0.5"/>
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="24" rx="10" ry="8" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="24" rx="10" ry="8" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="24" cy="22" rx="2.5" ry="2.5" fill="#222"/>
+                  <ellipse cx="40" cy="22" rx="2.5" ry="2.5" fill="#222"/>
+                  <rect x="28" y="16" width="8" height="6" rx="3" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <rect x="28" y="16" width="8" height="6" rx="3" fill="none" stroke="#222" stroke-width="2"/>
+                  <rect x="24" y="38" width="16" height="4" rx="2" fill="#222"/>
+                  <rect x="24" y="44" width="16" height="4" rx="2" fill="#222"/>
+                  <rect x="24" y="50" width="16" height="4" rx="2" fill="#222"/>
+                  <ellipse cx="18" cy="38" rx="6" ry="3" fill="#fff" opacity="0.7"/>
+                  <ellipse cx="46" cy="38" rx="6" ry="3" fill="#fff" opacity="0.7"/>
+                  <line x1="32" y1="10" x2="28" y2="2" stroke="#222" stroke-width="2"/>
+                  <line x1="32" y1="10" x2="36" y2="2" stroke="#222" stroke-width="2"/>
+                </svg>
+            </span>
+            <h1 style="font-family:'Poppins',sans-serif;color:#40a0f0;font-size:2.2em;margin:0;">DiccioSys</h1>
+        </div>
+        <p class="subtitle">Welcome to DiccioSys, your interactive Systems Engineering dictionary.<br>Click below to start exploring 50 key concepts!</p>
+        <button id="start-btn">Start</button>
+    </div>
+    <div id="main-dictionary" class="container hidden">
+        <div style="display:flex;justify-content:center;align-items:center;gap:18px;">
+            <span style="display:inline-block;width:38px;height:38px;">
+                <!-- Bee SVG Logo -->
+                <svg viewBox="0 0 64 64" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="38" rx="8" ry="14" fill="#fff" opacity="0.5"/>
+                  <ellipse cx="32" cy="38" rx="18" ry="14" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="24" rx="10" ry="8" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="32" cy="24" rx="10" ry="8" fill="none" stroke="#222" stroke-width="2"/>
+                  <ellipse cx="24" cy="22" rx="2.5" ry="2.5" fill="#222"/>
+                  <ellipse cx="40" cy="22" rx="2.5" ry="2.5" fill="#222"/>
+                  <rect x="28" y="16" width="8" height="6" rx="3" fill="#FFD700" stroke="#222" stroke-width="2"/>
+                  <rect x="28" y="16" width="8" height="6" rx="3" fill="none" stroke="#222" stroke-width="2"/>
+                  <rect x="24" y="38" width="16" height="4" rx="2" fill="#222"/>
+                  <rect x="24" y="44" width="16" height="4" rx="2" fill="#222"/>
+                  <rect x="24" y="50" width="16" height="4" rx="2" fill="#222"/>
+                  <ellipse cx="18" cy="38" rx="6" ry="3" fill="#fff" opacity="0.7"/>
+                  <ellipse cx="46" cy="38" rx="6" ry="3" fill="#fff" opacity="0.7"/>
+                  <line x1="32" y1="10" x2="28" y2="2" stroke="#222" stroke-width="2"/>
+                  <line x1="32" y1="10" x2="36" y2="2" stroke="#222" stroke-width="2"/>
+                </svg>
+            </span>
+            <h1 style="font-family:'Poppins',sans-serif;color:#62a4f0;font-size:2em;margin:0;">DiccioSys</h1>
+        </div>
+           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <input type="text" id="search" placeholder="Search for a concept..." style="flex:1;">
+        </div>
+        <div class="category-filter" id="category-filter">
+            <!-- Categoría de ejemplo, se llenará dinámicamente -->
+        </div>
+        <ul id="dictionary-list">
+            <!-- Words will be loaded here by ui.js -->
+        </ul>
+        <div id="definition-box" class="hidden">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                <h2 id="word-title" style="margin-bottom:0;"></h2>
+                <button id="pronounce-btn" class="pronounce-btn" title="Hear pronunciation">🔊</button>
+                <button id="favorite-btn" class="favorite-btn" title="Add to favorites">☆</button>
+            </div>
+            <img id="concept-image" class="concept-image" src="" alt="" style="display:none;" />
+            <p id="word-definition"></p>
+            <button id="close-btn">Close</button>
+        </div>
+        <div id="quiz-panel" class="quiz-panel">
+            <div class="quiz-content">
+                <h2>Quiz: Test your knowledge!</h2>
+                <div id="quiz-question" class="quiz-question"></div>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-feedback" class="quiz-feedback"></div>
+                <button id="close-quiz-btn" class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="ui.js"></script>
+</body>
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": ["#43cea2", "#ffd200", "#2193b0"] },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5, "random": true },
+    "size": { "value": 4, "random": true },
+    "line_linked": { "enable": false },
+    "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "repulse" },
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "repulse": { "distance": 80, "duration": 0.4 },
+      "push": { "particles_nb": 4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
+</html> 
